@@ -6,6 +6,7 @@ import {
   View,
   TabBarIOS
 } from 'react-native';
+import Add from './components/add';
 
 export default class Todo extends Component {
   constructor() {
@@ -46,7 +47,7 @@ export default class Todo extends Component {
           selected={this.state.selectedTab === 'add'}
           onPress={this.handleAddPress}
         >
-          <Text>Another hello</Text>
+          <Add />
         </TabBarIOS.Item>
       </TabBarIOS>
     );
