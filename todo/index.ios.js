@@ -7,15 +7,19 @@ import {
   TabBarIOS
 } from 'react-native';
 import Add from './components/add';
+import List from './components/list';
 
 export default class Todo extends Component {
   constructor() {
     super();
     this.state = {
-      selectedTab: 'todo'
+      selectedTab: 'todo',
+      todos: []
     };
     this.handleListPress = this.handleListPress.bind(this);
     this.handleAddPress = this.handleAddPress.bind(this);
+    this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
   }
 
   handleListPress() {
@@ -30,6 +34,23 @@ export default class Todo extends Component {
     });
   }
 
+  handleAddTodo(todo) {
+    let { todos } = this.state;
+    todos = todos.slice();
+    todos.push(todo);
+    this.setState({ todos });
+  }
+
+  handleDeleteTodo(todo) {
+    let { todos } = this.state;
+    todos = todos.slice();
+    const index = todos.findIndex(t => t.todo === todo);
+    if (index !== -1) {
+      todos.splice(index, 1);
+      this.setState({ todos });
+    }
+  }
+
   render() {
     return (
       <TabBarIOS>
@@ -39,7 +60,10 @@ export default class Todo extends Component {
           selected={this.state.selectedTab === 'todo'}
           onPress={this.handleListPress}
         >
-          <Text>Hello world</Text>
+          <List
+            todos={this.state.todos}
+            onDeleteTodo={this.handleDeleteTodo}
+          />
         </TabBarIOS.Item>
         <TabBarIOS.Item
           title="Add"
@@ -47,7 +71,7 @@ export default class Todo extends Component {
           selected={this.state.selectedTab === 'add'}
           onPress={this.handleAddPress}
         >
-          <Add />
+          <Add onAddTodo={this.handleAddTodo} />
         </TabBarIOS.Item>
       </TabBarIOS>
     );
