@@ -1,32 +1,54 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TabBarIOS
 } from 'react-native';
 
-export default class todo extends Component {
+export default class Todo extends Component {
+  constructor() {
+    super();
+    this.state = {
+      selectedTab: 'todo'
+    };
+    this.handleListPress = this.handleListPress.bind(this);
+    this.handleAddPress = this.handleAddPress.bind(this);
+  }
+
+  handleListPress() {
+    this.setState({
+      selectedTab: 'todo'
+    });
+  }
+
+  handleAddPress() {
+    this.setState({
+      selectedTab: 'add'
+    });
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <TabBarIOS>
+        <TabBarIOS.Item
+          title="Todo"
+          systemIcon="recents"
+          selected={this.state.selectedTab === 'todo'}
+          onPress={this.handleListPress}
+        >
+          <Text>Hello world</Text>
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+          title="Add"
+          systemIcon="more"
+          selected={this.state.selectedTab === 'add'}
+          onPress={this.handleAddPress}
+        >
+          <Text>Another hello</Text>
+        </TabBarIOS.Item>
+      </TabBarIOS>
     );
   }
 }
@@ -50,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('todo', () => todo);
+AppRegistry.registerComponent('todo', () => Todo);
