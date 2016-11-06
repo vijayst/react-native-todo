@@ -53,7 +53,7 @@ export default class Todo extends Component {
           actions={actions}
           onActionSelected={this.handleActionSelected}
           style={styles.toolbar}
-          title={this.state.actionText}
+          subtitle={this.state.actionText}
         />
         <ViewPagerAndroid
           ref={c => { this.pager = c; }}
