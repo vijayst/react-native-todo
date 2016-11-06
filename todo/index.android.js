@@ -3,22 +3,47 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  ViewPagerAndroid
 } from 'react-native';
 import ToolbarAndroid from 'ToolbarAndroid';
+import List from './components/list';
+import Add from './components/add';
 
 export default class Todo extends Component {
 
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      todos: []
+    };
     this.handleActionSelected = this.handleActionSelected.bind(this);
+    this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
   }
 
   handleActionSelected(position) {
     this.setState({
       actionText: actions[position].title,
     });
+    this.pager.setPage(position);
+  }
+
+  handleAddTodo(todo) {
+    let { todos } = this.state;
+    todos = todos.slice();
+    todos.push(todo);
+    this.setState({ todos });
+  }
+
+  handleDeleteTodo(todo) {
+    let { todos } = this.state;
+    todos = todos.slice();
+    const index = todos.findIndex(t => t.todo === todo);
+    if (index !== -1) {
+      todos.splice(index, 1);
+      this.setState({ todos });
+    }
   }
 
   render() {
@@ -30,6 +55,21 @@ export default class Todo extends Component {
           style={styles.toolbar}
           title={this.state.actionText}
         />
+        <ViewPagerAndroid
+          ref={c => { this.pager = c; }}
+          style={styles.viewPager}
+          initialPage={0}
+        >
+          <View>
+            <List
+              todos={this.state.todos}
+              onDeleteTodo={this.handleDeleteTodo}
+            />
+          </View>
+          <View>
+            <Add onAddTodo={this.handleAddTodo} />
+          </View>
+        </ViewPagerAndroid>
       </View>
     );
   }
@@ -55,6 +95,9 @@ const styles = StyleSheet.create({
   toolbar: {
     backgroundColor: '#e9eaed',
     height: 56,
+  },
+  viewPager: {
+    flex: 1,
   },
 });
 

@@ -5,7 +5,8 @@ import {
   TextInput,
   View,
   TouchableHighlight,
-  Text
+  Text,
+  Platform
 } from 'react-native';
 import Error from './error';
 
@@ -69,13 +70,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFAF6',
-    marginTop: 20,
+    marginTop: (Platform.OS === 'ios') ? 20 : 0,
     marginBottom: 50,
   },
   input: {
     height: 35,
     borderColor: '#ccc',
-    borderWidth: 1,
+    borderWidth: (Platform.OS === 'ios') ? 1 : 0,
     borderRadius: 5,
     marginLeft: 20,
     marginRight: 20,

@@ -5,7 +5,8 @@ import {
   View,
   TouchableHighlight,
   Text,
-  ListView
+  ListView,
+  Platform
 } from 'react-native';
 import Error from './error';
 
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFAF6',
-    marginTop: 20,
+    marginTop: (Platform.OS === 'ios') ? 20 : 0,
     marginBottom: 50,
   },
   title: {
