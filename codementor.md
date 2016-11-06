@@ -35,7 +35,7 @@ The `android` folder has the `app` folder which has the source code for the app 
 
 The entry point for the React Native app is `index.android.js`. On running the React Native app, the Todo component within `index.android.js` is rendered.
 
-
+![Android home](https://cdn.filestackcontent.com/C2RgWBTQSWytI5W7QP06 "Android home")
 
 ### B.  Using equivalent Android components
 
