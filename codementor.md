@@ -17,11 +17,25 @@ When the Todo item is done, press the Done button. This will remove the Todo ite
 
 ![Add Todo](https://cdn.filestackcontent.com/dVQ4SriRSFmgmkJhQphZ "Add Todo")
 
-In this tutorial, we will retrofit the app for the Android platform.
+The source code for the iOS app can be found in the [Github project](https://github.com/vijayst/react-native-todo). In this tutorial, we will retrofit the app for the Android platform.
 
 ### A. Getting started with Android in React Native.
+There is a [Getting started](https://facebook.github.io/react-native/docs/getting-started.html) guide for setting up React native for Android app development. The precise steps vary based on the development OS - Mac, Linux and Windows. At high level, setting up React Native for Android involves:
 
-(setting up, exploring android folder)
+1. Installing Node.
+2. Installing Android Studio.
+3. Setting the `ANDROID_HOME` path.
+4. Creating a new AVD (Android virtual device or emulator)
+
+Any new React Native project has an Android project.
+
+![Android project](https://cdn.filestackcontent.com/VJHmFBfYTHC7ZsOUAJQ7 "Android project")
+
+The `android` folder has the `app` folder which has the source code for the app and the `gradle` folder which has the associated build settings.
+
+The entry point for the React Native app is `index.android.js`. On running the React Native app, the Todo component within `index.android.js` is rendered.
+
+
 
 ### B.  Using equivalent Android components
 
