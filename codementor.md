@@ -1,4 +1,4 @@
-## Introduction to React native
+## 1. Introduction to React native
 React Native is a framework for building mobile apps using React and JavaScript. It has support for building mobile apps for the iOS and Android platforms. The framework is open-sourced by Facebook on March 2015. It is built on the premise: **Learn once, Write anywhere**.
 
 Learning React is a one-time effort. Using React for UI, we can build web applications and mobile apps.  React Native facilitates building mobile apps using React. React Native has a set of React components for iOS and Android platforms.
@@ -9,24 +9,25 @@ The React components available with React Native gets translated to native compo
 
 The [Facebook post](https://code.facebook.com/posts/1014532261909640/react-native-bringing-modern-web-techniques-to-mobile/) explains why "native is necessary".
 
-## Tutorial
+## 2. Tutorial
 
-## Getting started with Android in React native.
+### A. Getting started with Android in React native.
 
 (setting up, exploring android folder)
 
-## Displaying menu  
+### B.  Using equivalent Android components
 
 (Moving TabBarIOS to ToolbarAndroid, DrawerLayoutAndroid)
+handling progress
 
-## Android only components
+### C. Android only components
 
 (ViewPager, Toast, TimePicker)
 
-## Other differences
+### D. Other differences
 
-(keyboard handling, handling progress, additional props, etc)
+(keyboard handling, additional props, etc)
 
-## Wrapping up
+### E. Wrapping up
 (Underlying idea - having a native feel)
 Github project.
