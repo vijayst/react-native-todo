@@ -48,7 +48,7 @@ export default class List extends Component {
                 onPress={() => this.handleDeletePress(rowData.todo)}
               >
                 <Text style={styles.buttonText}>
-                  Delete
+                  Done
                 </Text>
               </TouchableHighlight>
             </View>

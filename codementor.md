@@ -10,8 +10,16 @@ The React components available with React Native gets translated to native compo
 The [Facebook post](https://code.facebook.com/posts/1014532261909640/react-native-bringing-modern-web-techniques-to-mobile/) explains why "native is necessary".
 
 ## 2. Tutorial
+The tutorial extends a Todo iOS app built with React Native to the Android platform. The Todo app is super-simple. It has two tabs. The first tab has the Todo list.
+![Todo list](https://cdn.filestackcontent.com/kKhQMm8sTuHcHRb9Q1xQ "Todo list")
 
-### A. Getting started with Android in React native.
+When the Todo item is done, press the Done button. This will remove the Todo item from the list. The second tab has the `Add Todo` form.
+
+![Add Todo](https://cdn.filestackcontent.com/dVQ4SriRSFmgmkJhQphZ "Add Todo")
+
+In this tutorial, we will retrofit the app for the Android platform.
+
+### A. Getting started with Android in React Native.
 
 (setting up, exploring android folder)
 
