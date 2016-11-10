@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-  ViewPagerAndroid
+  ViewPagerAndroid,
+  ToastAndroid
 } from 'react-native';
 import ToolbarAndroid from 'ToolbarAndroid';
 import List from './components/list';
@@ -34,6 +35,7 @@ export default class Todo extends Component {
     todos = todos.slice();
     todos.push(todo);
     this.setState({ todos });
+    ToastAndroid.showWithGravity('Todo is added', ToastAndroid.LONG, ToastAndroid.TOP);
   }
 
   handleDeleteTodo(todo) {

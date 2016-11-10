@@ -90,12 +90,25 @@ React Native components renders as native components in each platform. Component
 
 
 ### C. Android only components
+`ToastAndroid` is an API available only for Android. It displays a `toast` or message that appears for a short duration. The `handleAddTodo` method adds a Todo item to the Todo list. After the item is added, a toast message is displayed.
 
-(ViewPager, Toast, TimePicker)
+```
+  handleAddTodo(todo) {
+    let { todos } = this.state;
+    todos = todos.slice();
+    todos.push(todo);
+    this.setState({ todos });
+    ToastAndroid.showWithGravity('Todo is added', ToastAndroid.LONG, ToastAndroid.TOP);
+  }
+```
+
+![Toast](https://cdn.filestackcontent.com/fpEiXjCT6iROoghFaXp7 "Toast")
+
+We have already seen `ToolbarAndroid` and `ViewPagerAndroid` components which exists only for the Android platform. [DrawerLayoutAndroid](https://facebook.github.io/react-native/docs/drawerlayoutandroid.html) is another Android only React component that wraps the DrawerLayout. DrawerLayout renders the navigation view which can pulled from the side of the app.
 
 ### D. Other differences
 
-(keyboard handling, additional props, etc)
+(Platform === Android, keyboard handling, additional props, etc)
 
 ### E. Wrapping up
 (Underlying idea - having a native feel)
