@@ -39,8 +39,55 @@ The entry point for the React Native app is `index.android.js`. On running the R
 
 ### B.  Using equivalent Android components
 
-(Moving TabBarIOS to ToolbarAndroid, DrawerLayoutAndroid)
-handling progress
+The iOS app used `TabBarIOS` component for displaying tabs. For Android, the `TabBarIOS` component needs to be replaced with `ToolbarAndroid` component. The render method of `index.android` component is shown below.
+
+
+```
+ render() {
+    return (
+      <View style={styles.container}>
+        <ToolbarAndroid
+          actions={actions}
+          onActionSelected={this.handleActionSelected}
+          style={styles.toolbar}
+          subtitle={this.state.actionText}
+        />
+        <ViewPagerAndroid
+          ref={c => { this.pager = c; }}
+          style={styles.viewPager}
+          initialPage={0}
+        >
+          <View>
+            <List
+              todos={this.state.todos}
+              onDeleteTodo={this.handleDeleteTodo}
+            />
+          </View>
+          <View>
+            <Add onAddTodo={this.handleAddTodo} />
+          </View>
+        </ViewPagerAndroid>
+      </View>
+    );
+  }
+}
+```
+The two views - `Add` and `List` are embedded in `ViewPagerAndroid` component. The List component lists all the Todo items. The Add component adds a new Todo item. `ToolbarAndroid` has `onActionSelected` event which must be handled to switch to a new view.
+
+```
+  handleActionSelected(position) {
+    this.setState({
+      actionText: actions[position].title,
+    });
+    this.pager.setPage(position);
+  }
+```
+The reason we moved TabBarIOS to ToolbarAndroid is because of the native experience we get. The following video highlights the native experience when we select the toolbar actions.
+
+![Native experience](https://cdn.filestackcontent.com/3jwvOzfmSlqbHmGti381 "Native experience")
+
+React Native components renders as native components in each platform. Components suffixed with `IOS` are available only for iOS platform. Components suffixed with `Android` are available only for Android platform. For displaying progress, `ProgressViewIOS` and `ProgressBarAndroid` are equivalent React Native components for each platform.
+
 
 ### C. Android only components
 
