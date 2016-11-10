@@ -107,9 +107,27 @@ React Native components renders as native components in each platform. Component
 We have already seen `ToolbarAndroid` and `ViewPagerAndroid` components which exists only for the Android platform. [DrawerLayoutAndroid](https://facebook.github.io/react-native/docs/drawerlayoutandroid.html) is another Android only React component that wraps the DrawerLayout. DrawerLayout renders the navigation view which can pulled from the side of the app.
 
 ### D. Other differences
+Platform differences can be explicitly handled with React components. For example, for the `TextInput` component, we don't want to show a border for the Android platform.
 
-(Platform === Android, keyboard handling, additional props, etc)
+```
+import { Platform, StyleSheet } from 'react-native';
+const styles = StyleSheet.create({
+  input: {
+    borderColor: '#ccc',
+    borderWidth: (Platform.OS === 'ios') ? 1 : 0,
+    borderRadius: 5,
+  },
+});
+```
+React Native components are configured using props. Some props are available only for Android platform. For example, the `numberOfLines` and `returnLabel` props in `TextInput` are available only for the Android platform. The `keyboardType` prop in `TextInput` deserves mention. Not all the keyboard types are available in both platforms. Only `default`, `numeric`, `email-address` and `phone-pad` are available cross-platform.
 
 ### E. Wrapping up
-(Underlying idea - having a native feel)
-Github project.
+While extending an iOS only React Native app to the Android platform, the following points should be kept in mind:
+
+1. There are platform specific components. Whenever an iOS only component is used, an equivalent Android only component should be used.
+2. There are Android only components which should be used to enhance the native experience.
+3. Most of the React Native components are cross-platform. There are minor difference in the props available to each platform.
+
+The underlying idea behind React Native is to provide the native experience to the user. There may be occasions where developers prefer to use JavaScript components to have the same look-and-feel across iOS and Android. A better approach is to take advantage of platform specific features to provide a better native experience. Native experience is preferred over consistent look-and-feel.
+
+There is an accompanying [GitHub project](https://github.com/vijayst/react-native-todo) to the tutorial.
